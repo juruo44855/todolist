@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Do do list 紀錄人</title>
+  <style>
+    body {
+      background-color: rgb(163, 225, 214);
+      background-size: 100% 130%;
+    }
+
+    #title {
+      margin-top: 5%;
+      text-align: center;
+    }
+
+    #login_box {
+      width: 20%;
+      height: 400px;
+      background-color: #069c9c;
+      margin: auto;
+      margin-top: 5%;
+      text-align: center;
+      border-radius: 10px;
+      padding: 50px 50px;
+      align-content: center;
+
+    }
+
+    #content_lbox {
+      width: 20%;
+      height: 400px;
+      background-color: #069c9c;
+      margin: auto;
+      margin-top: 5%;
+      text-align: center;
+      border-radius: 10px;
+      padding: 50px 50px;
+      align-content: center;
+      display: none;
+    }
+
+    #content_rbox {
+      width: 20%;
+      height: 400px;
+      background-color: #069c9c;
+      margin: auto;
+      margin-top: 5%;
+      text-align: center;
+      border-radius: 10px;
+      padding: 50px 50px;
+      align-content: center;
+      display: none;
+    }
+
+
+    h2 {
+      color: white;
+      margin-top: 5%;
+    }
+
+    #input-box {
+      margin-top: 5%;
+      margin-left: 0%;
+      margin-right: 0%;
+    }
+
+    span {
+      color: #fff;
+    }
+
+    input {
+      border: 0;
+      font-size: 15px;
+      color: #fff;
+      background: transparent;
+      border-bottom: 2px solid #fff;
+      padding: 5px 10px;
+      outline: none;
+      margin-top: 10px;
+    }
+
+    ::placeholder {
+      /* Chrome, Firefox, Opera, Safari 10.1+ */
+      color: white;
+    }
+
+    button {
+      margin-top: 30px;
+      width: 60%;
+      height: 30px;
+      border-radius: 10px;
+      border: 0;
+      color: #075757;
+      text-align: center;
+      line-height: 30px;
+      font-size: 15px;
+      background-color: #98e4e4;
+    }
+
+
+    .bot {
+      height: 30px;
+      width: 60%;
+      margin: auto;
+      margin-top: 30px;
+      border-radius: 10px;
+      border: 0;
+      text-align: center;
+      line-height: 30px;
+      font-size: 15px;
+      background-color: #98e4e4;
+    }
+
+    #sign_up {
+      margin-top: 45%;
+      margin-left: 60%;
+    }
+
+    a {
+      color: #075757;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: #c6dbdb;
+    }
+
+    .bot:hover {
+      background-color: #123d3d;
+    }
+
+    button:hover {
+      color: #c6dbdb;
+      background-color: #123d3d;
+    }
+
+    #main {
+      display: flex;
+      align-content: center;
+      text-align: center;
+    }
+
+    #y {
+      color: rgb(186, 241, 49);
+    }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $("#login").click(function () {
+        logincheckfunc();
+      });
+      $("#register").click(function () {
+        regcheckfunc();
+
+    });
+
+
+    $("#signupdisplay").click(function () {
+      $("#login_box").fadeToggle("fast");
+      setTimeout(() => $("#content_rbox").fadeToggle("fast"), 200)
+    });
+
+    $("#intro").click(function () {
+      $("#login_box").fadeToggle("fast");
+      setTimeout(() => $("#content_lbox").fadeToggle("fast"), 200)
+    });
+
+    $("#backr").click(function () {
+      $("#content_rbox").fadeToggle("fast");
+      setTimeout(() => $("#login_box").fadeToggle("fast"), 200)
+    });
+    $("#backl").click(function () {
+      $("#content_lbox").fadeToggle("fast");
+      setTimeout(() => $("#login_box").fadeToggle("fast"), 200)
+    });
+    });
+
+    function loginfunc() {
+      console.log("login");
+      alert("logining");
+      window.location.href='/main';
+    }
+    function logincheckfunc() {
+      let userobj = { user_id: $("#loginusername").val(), password: $("#loginpassword").val() }
+      $.get("/logincheck", userobj, function (res) {
+        alert("Checking");
+        console.log(res);
+        if (res == "1") {
+          alert("welcome"+" "+userobj.user_id);
+          loginfunc();
+        }
+        else if (res == "0") {
+          alert("NO this user");
+          return ;
+        }
+      });
+    }
+    function registerfunc() {
+      console.log("register");
+      let userobj = { user_id: $("#registerusername").val(), password: $("#registerpassword").val() }
+      $.get("/register", userobj, function (res) {
+        alert("Saving data to Atlas!");
+        console.log(res);
+      });
+    }
+    function regcheckfunc() {
+      let userobj = { user_id: $("#registerusername").val(), password: $("#registerpassword").val() }
+      $.get("/regcheck", userobj, function (res) {
+        alert("Checking");
+        console.log(res);
+        if (res == "0") {
+          alert("this username can use");
+          registerfunc();
+        }
+        else if (res == "1") {
+          alert("this username is used");
+          return ;
+        }
+      });
+    }
+  </script>
+</head>
+
+<body>
+  <div id="title">
+    <h1>To Do List</h1>
+  </div>
+  <div id="main">
+    <div id="content_lbox">
+      <h2>INTRO</h2>
+      <div id="input_box">
+        <span id="y">使用前請先註冊一個帳號</span><br>
+        <span>這是一個可以客製化使用主題的To Do List<span>
+      </div>
+      <button id="backl">返回</button><br>
+    </div>
+
+    <div id="login_box">
+      <h2>LOGIN</h2>
+      <div id="input_box">
+        <input id="loginusername" type="text" placeholder="請輸入用戶名">
+      </div>
+      <div class="input_box">
+        <input id="loginpassword" type="password" placeholder="請輸入密碼">
+      </div>
+      <button id="login">登陸</button><br>
+      <button id="signupdisplay">註冊</button><br>
+      <button id="intro">介紹</button><br>
+      <div class="bot"><a href="To Do List Web Project (1).pptx" target="_blank">說明文件下載</a></div>
+    </div>
+
+
+    <div id="content_rbox">
+      <h2>SIGN UP</h2>
+      <div id="input_box">
+        <input id="registerusername" type="text" placeholder="請輸入用戶名">
+      </div>
+      <div class="input_box">
+        <input id="registerpassword" type="password" placeholder="請輸入密碼">
+      </div>
+      <button id="register">註冊</button><br>
+      <button id="backr">返回</button><br>
+    </div>
+  </div>
+
+</body>
+
+</html>

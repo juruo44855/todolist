@@ -1,0 +1,139 @@
+body {
+    background-color: rgb(163, 225, 214);
+    background-size: 100% 130%;
+  }
+
+  #title {
+    margin-top: 5%;
+    text-align: center;
+  }
+
+  #login_box {
+    width: 20%;
+    height: 400px;
+    background-color: #069c9c;
+    margin: auto;
+    margin-top: 5%;
+    text-align: center;
+    border-radius: 10px;
+    padding: 50px 50px;
+    align-content: center;
+
+  }
+
+  #content_lbox {
+    width: 20%;
+    height: 400px;
+    background-color: #069c9c;
+    margin: auto;
+    margin-top: 5%;
+    text-align: center;
+    border-radius: 10px;
+    padding: 50px 50px;
+    align-content: center;
+    display: none;
+  }
+
+  #content_rbox {
+    width: 20%;
+    height: 400px;
+    background-color: #069c9c;
+    margin: auto;
+    margin-top: 5%;
+    text-align: center;
+    border-radius: 10px;
+    padding: 50px 50px;
+    align-content: center;
+    display: none;
+  }
+
+
+  h2 {
+    color: white;
+    margin-top: 5%;
+  }
+
+  #input-box {
+    margin-top: 5%;
+    margin-left: 0%;
+    margin-right: 0%;
+  }
+
+  span {
+    color: #fff;
+  }
+
+  input {
+    border: 0;
+    font-size: 15px;
+    color: #fff;
+    background: transparent;
+    border-bottom: 2px solid #fff;
+    padding: 5px 10px;
+    outline: none;
+    margin-top: 10px;
+  }
+
+  ::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: white;
+  }
+
+  button {
+    margin-top: 30px;
+    width: 60%;
+    height: 30px;
+    border-radius: 10px;
+    border: 0;
+    color: #075757;
+    text-align: center;
+    line-height: 30px;
+    font-size: 15px;
+    background-color: #98e4e4;
+  }
+
+
+  .bot {
+    height: 30px;
+    width: 60%;
+    margin: auto;
+    margin-top: 30px;
+    border-radius: 10px;
+    border: 0;
+    text-align: center;
+    line-height: 30px;
+    font-size: 15px;
+    background-color: #98e4e4;
+  }
+
+  #sign_up {
+    margin-top: 45%;
+    margin-left: 60%;
+  }
+
+  a {
+    color: #075757;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: #c6dbdb;
+  }
+
+  .bot:hover {
+    background-color: #123d3d;
+  }
+
+  button:hover {
+    color: #c6dbdb;
+    background-color: #123d3d;
+  }
+
+  #main {
+    display: flex;
+    align-content: center;
+    text-align: center;
+  }
+  #r{
+    color: rgb(186, 241, 49);
+  }
